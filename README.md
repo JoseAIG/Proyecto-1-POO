@@ -1,5 +1,5 @@
 # Proyecto-1-POO
-Proyecto 1 Programacion Orientada a Objetos URU 2020B José Inciarte
+Proyecto 1 Programacion Orientada a Objetos URU 2020B José Inciarte C.I. 27.696.083
 
 Muy buenas profesor, en este repositorio se encuentran dos (2) carpetas...
 
