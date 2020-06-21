@@ -314,7 +314,7 @@ public class Main_ZOO {
 						System.out.println("Caracteristicas del pinguino: " + Pinguino[0].comportamientoAnimal() + " " + Pinguino[0].getSkin() + " " + Pinguino[0].getHabitat() + " " + Pinguino[0].getCantidad_de_huevos() + " " + Pinguino[0].caminar() + " " + Pinguino[0].nadar() + " " + Pinguino[0].funFact());
 					}
 					if(Serpiente[0]!=null) {
-						System.out.println("Caracteristicas de la serpiente: " + Serpiente[0].comportamientoAnimal() + " " + Serpiente[0].getSkin() + " " + Serpiente[0].getHabitat() + " " + Serpiente[0].getCantidad_de_huevos() + " " + Serpiente[0].arrastrar() + " " + Serpiente[0].funFact());
+						System.out.println("Caracteristicas de la serpiente: " + Serpiente[0].comportamientoAnimal() + " " + Serpiente[0].getSkin() + " " + Serpiente[0].getHabitat() + " " + Serpiente[0].getCantidad_de_huevos() + " " + Serpiente[0].arrastrar() + " " + Serpiente[0].nadar() + " " + Serpiente[0].funFact());
 					}
 					if(Cocodrilo[0]!=null) {
 						System.out.println("Caracteristicas del cocodrilo: " + Cocodrilo[0].comportamientoAnimal() + " " + Cocodrilo[0].getSkin()  + " " + Cocodrilo[0].getHabitat() + " " + Cocodrilo[0].getCantidad_de_huevos() + " " + Cocodrilo[0].caminar() + " " + Cocodrilo[0].nadar() + " " + Cocodrilo[0].funFact());
