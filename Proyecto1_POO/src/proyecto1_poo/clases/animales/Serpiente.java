@@ -1,10 +1,11 @@
 package proyecto1_poo.clases.animales;
 
 import proyecto1_poo.Interfaces.Interface_arrastrar;
+import proyecto1_poo.Interfaces.Interface_nadar;
 import proyecto1_poo.clases.Reptil;
 
 
-public class Serpiente extends Reptil implements Interface_arrastrar{
+public class Serpiente extends Reptil implements Interface_arrastrar, Interface_nadar{
 
 	//ATRIBUTOS CLASE SERPIENTE
 	
@@ -36,6 +37,11 @@ public class Serpiente extends Reptil implements Interface_arrastrar{
 		return "Las serpientes se arrastran por el suelo y pueden acceder a lugares dificiles.";
 	}
 	
+	@Override
+	public String nadar() {
+		return "Las serpientes son capaces de nadar a una gran velocidad.";
+	}
+	
 	//OVERRIDE CLASE ANIMAL
 	@Override
 	public String comportamientoAnimal() {
@@ -51,4 +57,5 @@ public class Serpiente extends Reptil implements Interface_arrastrar{
 	public String toString() {
 		return super.toString() + " Tamaño de la serpiente: " + tamano_serpiente;
 	}
+
 }
