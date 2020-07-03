@@ -5,9 +5,9 @@ import proyecto1_poo.clases.Pez;
 
 public class Pez_globo extends Pez implements Interface_nadar{
 
-	private boolean veneno;
+	private String veneno;
 	
-	public Pez_globo(String apodo_animal, int edad, double peso, boolean veneno) {
+	public Pez_globo(String apodo_animal, int edad, double peso, String veneno) {
 		super(apodo_animal, edad, peso);
 		this.setNombre("Pez Globo");
 		this.setCantidad_de_huevos("Los pez globo pueden poner hasta 300 huevos.");
@@ -16,7 +16,7 @@ public class Pez_globo extends Pez implements Interface_nadar{
 		this.veneno=veneno;
 	}
 	
-	public Pez_globo(int edad, double peso, boolean veneno) {
+	public Pez_globo(int edad, double peso, String veneno) {
 		super(edad,peso);
 		this.setNombre("Pez Globo");
 		this.setCantidad_de_huevos("Los pez globo pueden poner hasta 300 huevos.");
@@ -44,7 +44,7 @@ public class Pez_globo extends Pez implements Interface_nadar{
 			
 	//POLIMORFISMO toString
 	public String toString() {
-		return super.toString() + " Tiene veneno: " + veneno;
+		return super.toString() + " Descripcion veneno: " + veneno;
 	}
 	
 }
