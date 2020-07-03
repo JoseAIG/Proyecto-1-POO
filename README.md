@@ -1,7 +1,7 @@
 # Proyectos-POO
 Proyectos Programacion Orientada a Objetos URU 2020B José Inciarte C.I. 27.696.083
 
-Muy buenas profesor, en este repositorio se encuentran dos (3) carpetas...
+Muy buenas profesor, en este repositorio se encuentran tres (3) carpetas...
 
 1.) Proyecto1_POO: Aqui se encuentra todo el codigo de Java, importado directamente desde el eclipse-workspace, con carpeta src y bin.
 
