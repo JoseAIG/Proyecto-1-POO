@@ -55,7 +55,7 @@ public class Serpiente extends Reptil implements Interface_arrastrar, Interface_
 	
 	//POLIMORFISMO toString
 	public String toString() {
-		return super.toString() + " Tamaño de la serpiente: " + tamano_serpiente;
+		return super.toString() + " Tamanio de la serpiente: " + tamano_serpiente;
 	}
 
 }
