@@ -1,41 +1,6 @@
 la BBDD se llama Zoologico
 
 //TABLA ANIMALES 
-create table animales (identificacion integer not null, animal varchar(10), especie varchar(10), apodo varchar(15), edad integer not null, peso numeric(7,2), primary key (identificacion));
+create table animales (identificacion integer not null, animal varchar(10), especie varchar(10), apodo varchar(15), edad integer not null, peso numeric(7,2),extra varchar(10), primary key (identificacion));
 
-//TABLA AGUILAS
-create table aguilas (identificacion integer not null, apodo varchar(15), edad integer not null, peso numeric(7,2), primary key(identificacion), foreign key(identificacion) references animales on update cascade on delete no action);
-
-//TABLA PINGUINOS
-create table pinguinos (identificacion integer not null, apodo varchar(15), edad integer not null, peso numeric(7,2), primary key(identificacion), foreign key(identificacion) references animales on update cascade on delete no action);
-
-//TABLA SERPIENTES
-create table serpientes (identificacion integer not null, apodo varchar(15), edad integer not null, peso numeric(7,2), tamanio varchar(15),primary key(identificacion), foreign key(identificacion) references animales on update cascade on delete no action);
-
-//TABLA COCODRILOS
-create table cocodrilos (identificacion integer not null, apodo varchar(15), edad integer not null, peso numeric(7,2), primary key(identificacion), foreign key(identificacion) references animales on update cascade on delete no action);
-
-//TABLA KOIS
-create table kois (identificacion integer not null, apodo varchar(15), edad integer not null, peso numeric(7,2), primary key(identificacion), foreign key(identificacion) references animales on update cascade on delete no action);
-
-//TABLA PECES GLOBO
-create table peces_globo (identificacion integer not null, apodo varchar(15), edad integer not null, peso numeric(7,2), veneno varchar(15),primary key(identificacion), foreign key(identificacion) references animales on update cascade on delete no action);
-
-//TABLA GUEPARDOS
-create table guepardos (identificacion integer not null, apodo varchar(15), edad integer not null, peso numeric(7,2), primary key(identificacion), foreign key(identificacion) references animales on update cascade on delete no action);
-
-//TABLA PUMAS
-create table pumas (identificacion integer not null, apodo varchar(15), edad integer not null, peso numeric(7,2), primary key(identificacion), foreign key(identificacion) references animales on update cascade on delete no action);
-
-//TABLA MONOS
-create table monos (identificacion integer not null, apodo varchar(15), edad integer not null, peso numeric(7,2), primary key(identificacion), foreign key(identificacion) references animales on update cascade on delete no action);
-
-//TABLA GORILAS
-create table gorilas (identificacion integer not null, apodo varchar(15), edad integer not null, peso numeric(7,2), primary key(identificacion), foreign key(identificacion) references animales on update cascade on delete no action);
-
-//TABLA VACAS
-create table vacas (identificacion integer not null, apodo varchar(15), edad integer not null, peso numeric(7,2), leche varchar(15),primary key(identificacion), foreign key(identificacion) references animales on update cascade on delete no action);
-
-//TABLA TOROS
-create table toros (identificacion integer not null, apodo varchar(15), edad integer not null, peso numeric(7,2), primary key(identificacion), foreign key(identificacion) references animales on update cascade on delete no action);
 
