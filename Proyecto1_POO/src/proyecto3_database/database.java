@@ -107,15 +107,16 @@ public class database {
 			}
 		}
 	}
-	
-	//METODO QUE PERMITE INGRESAR PARAMETROS A TABLAS DE ANIMALES PROPIAS
-	public void dbPStmtIngresarAnimalesNormales(String query, Object[] obj) {
+
+	//METODO QUE PERMITE INGRESAR PARAMETROS A TABLAS DE ANIMALES PROPIAS (ESPECIALES)
+	public void dbPStmtIngresarAnimalesEspeciales(String query, Object[] obj) {
 		try {
 			this.pstmt = this.conn.prepareStatement(query);
 			this.pstmt.setInt(1, (int) obj[0]);
 			this.pstmt.setString(2, (String) obj[1]);
 			this.pstmt.setInt(3, (int) obj[2]);
 			this.pstmt.setDouble(4, (double) obj[3]);
+			this.pstmt.setString(5, (String)obj[4]);
 			this.pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -128,15 +129,17 @@ public class database {
 		}
 	}
 	
-	//METODO QUE PERMITE INGRESAR PARAMETROS A TABLAS DE ANIMALES PROPIAS (ESPECIALES)
-	public void dbPStmtIngresarAnimalesEspeciales(String query, Object[] obj) {
+	//METODO QUE PERMITE INGRESAR PARAMETROS + EXTRA A TABLA GLOBAL DE ANIMALES
+	public void dbPStmtIngresarTablaTodosExtra(String query, Object[] obj) {
 		try {
 			this.pstmt = this.conn.prepareStatement(query);
-			this.pstmt.setInt(1, (int) obj[0]);
+			this.pstmt.setInt(1,(int) obj[0]);
 			this.pstmt.setString(2, (String) obj[1]);
-			this.pstmt.setInt(3, (int) obj[2]);
-			this.pstmt.setDouble(4, (double) obj[3]);
-			this.pstmt.setString(5, (String)obj[4]);
+			this.pstmt.setString(3, (String) obj[2]);
+			this.pstmt.setString(4, (String) obj[3]);
+			this.pstmt.setInt(5, (int) obj[4]);
+			this.pstmt.setDouble(6, (double) obj[5]);
+			this.pstmt.setString(7, (String)obj[6]);
 			this.pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -235,7 +238,7 @@ public class database {
 				apodo = "| " +  rs.getString("apodo");
 				edad = "| " +  rs.getString("edad");
 				peso = "| " +  rs.getString("peso");
-				extra = "| " + rs.getString(5);
+				extra = "| " + rs.getString(7);
 				animal[i]=id + "\t" + apodo + " \t" + edad + "\t" + peso + "\t" + extra + "\t|";
 				i++;
 			}

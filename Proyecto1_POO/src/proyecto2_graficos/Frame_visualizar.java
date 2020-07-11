@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 /*
  * Frame_visualizar... EN ESTA CLASE ESTA TODO EL CONTENIDO PARA: 
  * 
- * -VISUALIZAR TODAS LAS TABLAS DE LOS ANIMALES (GLOBAL, ES DECIR TODOS LOS ANIMALES DEL ZOO Y LAS TABLAS PROPIAS DE CADA TIPO DE ANIMAL)
- * -MODIFICAR PARAMETROS DE LOS ANIMALES EN LAS DIVERSAS TABLAS DE LA BBDD (APODO, EDAD, PESO)
+ * -VISUALIZAR TODAS LA TABLA DE LOS ANIMALES Y POR CONSULTAS, FILTRAR POR TIPO DE ANIMAL
+ * -MODIFICAR PARAMETROS DE LOS ANIMALES EN LAS DIVERSAS TABLAS DE LA BBDD (APODO, EDAD, PESO, EXTRA)
  * -ELIMINAR ANIMALES DE LA BBDD (LA ELIMINACION ES POR ID, SE INGRESA EL ID DEL ANIMAL A ELIMINAR)
  */
 
@@ -31,6 +31,7 @@ public class Frame_visualizar{
 	private JPanel panelModificarApodo = new JPanel();
 	private JPanel panelModificarEdad = new JPanel();
 	private JPanel panelModificarPeso = new JPanel();	
+	private JPanel panelModificarExtra = new JPanel();
 	
 	//JBUTTONS
 	private JButton botonTablaTodos = new JButton("TODOS");
@@ -56,10 +57,13 @@ public class Frame_visualizar{
 	private JButton botonModificarNombre = new JButton("NOMBRE");
 	private JButton botonModificarEdad = new JButton("EDAD");
 	private JButton botonModificarPeso = new JButton ("PESO");
+	private JButton botonModificarExtra = new JButton("EXTRA");
+
 
 	private JButton botonAceptarModificarNombre = new JButton("ACEPTAR");
 	private JButton botonAceptarModificarEdad = new JButton("ACEPTAR");
 	private JButton botonAceptarModificarPeso = new JButton("ACEPTAR");
+	private JButton botonAceptarModificarExtra = new JButton("ACEPTAR");
 	
 	private JButton botonVolverInicioModificar = new JButton("regresar");
 	private JButton botonVolverMenuDeModificarNombre = new JButton("regresar");
@@ -90,6 +94,7 @@ public class Frame_visualizar{
 	private JTextField textFieldModificarApodo = new JTextField();
 	private JTextField textFieldModificarEdad = new JTextField();
 	private JTextField textFieldModificarPeso = new JTextField();
+	private JTextField textFieldModificarExtra = new JTextField();
 	
 	//JLABELS
 	private JLabel labelEliminarAnimal = new JLabel("Ingrese No. ID del animal a eliminar");
@@ -98,6 +103,7 @@ public class Frame_visualizar{
 	private JLabel labelModificarApodo = new JLabel ("Ingrese nuevo apodo para el animal");
 	private JLabel labelModificarEdad = new JLabel ("Ingrese nueva edad para el animal");
 	private JLabel labelModificarPeso = new JLabel ("Ingrese nuevo peso para el animal");
+	private JLabel labelModificarExtra = new JLabel ("Ingrese nuevo extra para el animal");
 	
 	//OTROS ATRIBUTOS
 	private String entradaModificar=null;
@@ -154,51 +160,51 @@ public class Frame_visualizar{
 		scrollPaneTablaTodos.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
 		//JTEXTAREAS DE TODAS LAS TABLAS DE LOS ANIMALES
-		textAreaAguilas.setText("LISTA DE TODAS LAS AGUILAS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM aguilas ORDER BY identificacion ASC"));
+		textAreaAguilas.setText("LISTA DE TODAS LAS AGUILAS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM animales WHERE Animal='Aguila' ORDER BY identificacion ASC"));
 		textAreaAguilas.setBounds(85, 0, 500, 400);
 		textAreaAguilas.setBackground(SystemColor.menu);
 		
-		textAreaPinguinos.setText("LISTA DE TODOS LOS PINGUINOS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM pinguinos ORDER BY identificacion ASC"));
+		textAreaPinguinos.setText("LISTA DE TODOS LOS PINGUINOS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM animales WHERE Animal='Pinguino' ORDER BY identificacion ASC"));
 		textAreaPinguinos.setBounds(85, 0, 500, 400);
 		textAreaPinguinos.setBackground(SystemColor.menu);
 		
-		textAreaSerpientes.setText("LISTA DE TODAS LAS SERPIENTES\n" + dbVer.dbStmtTablaEspecialesString("SELECT *FROM serpientes ORDER BY identificacion ASC"));
+		textAreaSerpientes.setText("LISTA DE TODAS LAS SERPIENTES\n" + dbVer.dbStmtTablaEspecialesString("SELECT *FROM animales WHERE Animal='Serpiente' ORDER BY identificacion ASC"));
 		textAreaSerpientes.setBounds(85, 0, 500, 400);
 		textAreaSerpientes.setBackground(SystemColor.menu);
 		
-		textAreaCocodrilos.setText("LISTA DE TODOS LOS COCODRILOS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM cocodrilos ORDER BY identificacion ASC"));
+		textAreaCocodrilos.setText("LISTA DE TODOS LOS COCODRILOS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM animales WHERE Animal='Cocodrilo' ORDER BY identificacion ASC"));
 		textAreaCocodrilos.setBounds(85, 0, 500, 400);
 		textAreaCocodrilos.setBackground(SystemColor.menu);
 		
-		textAreaKois.setText("LISTA DE TODOS LOS KOIS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM kois ORDER BY identificacion ASC"));
+		textAreaKois.setText("LISTA DE TODOS LOS KOIS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM animales WHERE Animal='Koi' ORDER BY identificacion ASC"));
 		textAreaKois.setBounds(85, 0, 500, 400);
 		textAreaKois.setBackground(SystemColor.menu);
 		
-		textAreaPeces_globo.setText("LISTA DE TODOS LOS PECES GLOBO\n" + dbVer.dbStmtTablaEspecialesString("SELECT *FROM peces_globo ORDER BY identificacion ASC"));
+		textAreaPeces_globo.setText("LISTA DE TODOS LOS PECES GLOBO\n" + dbVer.dbStmtTablaEspecialesString("SELECT *FROM animales WHERE Animal='Pez Globo' ORDER BY identificacion ASC"));
 		textAreaPeces_globo.setBounds(85, 0, 500, 400);
 		textAreaPeces_globo.setBackground(SystemColor.menu);
 		
-		textAreaGuepardos.setText("LISTA DE TODOS LOS GUEPARDOS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM guepardos ORDER BY identificacion ASC"));
+		textAreaGuepardos.setText("LISTA DE TODOS LOS GUEPARDOS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM animales WHERE Animal='Guepardo' ORDER BY identificacion ASC"));
 		textAreaGuepardos.setBounds(85, 0, 500, 400);
 		textAreaGuepardos.setBackground(SystemColor.menu);
 		
-		textAreaPumas.setText("LISTA DE TODOS LOS PUMAS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM pumas ORDER BY identificacion ASC"));
+		textAreaPumas.setText("LISTA DE TODOS LOS PUMAS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM animales WHERE Animal='Puma' ORDER BY identificacion ASC"));
 		textAreaPumas.setBounds(85, 0, 500, 400);
 		textAreaPumas.setBackground(SystemColor.menu);
 		
-		textAreaMonos.setText("LISTA DE TODOS LOS MONOS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM monos ORDER BY identificacion ASC"));
+		textAreaMonos.setText("LISTA DE TODOS LOS MONOS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM animales WHERE Animal='Mono' ORDER BY identificacion ASC"));
 		textAreaMonos.setBounds(85, 0, 500, 400);
 		textAreaMonos.setBackground(SystemColor.menu);
 		
-		textAreaGorilas.setText("LISTA DE TODOS LOS GORILAS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM gorilas ORDER BY identificacion ASC"));
+		textAreaGorilas.setText("LISTA DE TODOS LOS GORILAS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM animales WHERE Animal='Gorila' ORDER BY identificacion ASC"));
 		textAreaGorilas.setBounds(85, 0, 500, 400);
 		textAreaGorilas.setBackground(SystemColor.menu);
 		
-		textAreaVacas.setText("LISTA DE TODOS LAS VACAS\n" + dbVer.dbStmtTablaEspecialesString("SELECT *FROM vacas ORDER BY identificacion ASC"));
+		textAreaVacas.setText("LISTA DE TODOS LAS VACAS\n" + dbVer.dbStmtTablaEspecialesString("SELECT *FROM animales WHERE Animal='Vaca' ORDER BY identificacion ASC"));
 		textAreaVacas.setBounds(85, 0, 500, 400);
 		textAreaVacas.setBackground(SystemColor.menu);
 		
-		textAreaToros.setText("LISTA DE TODOS LOS TOROS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM toros ORDER BY identificacion ASC"));
+		textAreaToros.setText("LISTA DE TODOS LOS TOROS\n" + dbVer.dbStmtTablaPropiaString("SELECT *FROM animales WHERE Animal='Toro' ORDER BY identificacion ASC"));
 		textAreaToros.setBounds(85, 0, 500, 400);
 		textAreaToros.setBackground(SystemColor.menu);
 		
@@ -235,6 +241,7 @@ public class Frame_visualizar{
 		botonAceptarModificarNombre.setBounds(170, 170, 120, 25);
 		botonAceptarModificarEdad.setBounds(170, 170, 120, 25);
 		botonAceptarModificarPeso.setBounds(170, 170, 120, 25);
+		botonAceptarModificarExtra.setBounds(170, 170, 120, 25);
 		
 		//JTEXTFIELDS
 		textFieldEliminar.setBounds(200, 90, 60, 20);
@@ -248,6 +255,9 @@ public class Frame_visualizar{
 		
 		textFieldModificarPeso.setBounds(200, 90, 60, 20);
 		panelModificarPeso.add(textFieldModificarPeso);
+		
+		textFieldModificarExtra.setBounds(200, 90, 60, 20);
+		panelModificarExtra.add(textFieldModificarExtra);
 		
 		//JLABELS
 		labelEliminarAnimal.setBounds(135, 40, 200, 25);
@@ -267,8 +277,10 @@ public class Frame_visualizar{
 		
 		labelModificarPeso.setBounds(120, 40, 225, 25);
 		panelModificarPeso.add(labelModificarPeso);
+				
+		labelModificarExtra.setBounds(120, 40, 225, 25);
+		panelModificarExtra.add(labelModificarExtra);
 		
-
 		marcoVisualizar.setContentPane(panelMenuVer);
 		marcoVisualizar.getContentPane().add(scrollPaneTablaTodos);
 		marcoVisualizar.invalidate();
@@ -305,6 +317,13 @@ public class Frame_visualizar{
 		panelMenuModificar.add(botonModificarPeso);
 		panelModificarPeso.add(botonAceptarModificarPeso);
 		panelModificarPeso.add(botonVolverMenuDeModificarPeso);
+		
+		//CONFIGURACIONES DEL PANEL PARA MODIFICAR EXTRA
+		panelModificarExtra.setLayout(null);
+		botonModificarExtra.setBounds(180, 135, 85, 30);
+		panelMenuModificar.add(botonModificarExtra);
+		panelModificarExtra.add(botonAceptarModificarExtra);
+		
 		
 		//ACCION AL PULSAR BOTON MODIFICAR EN FRAME VER
 		botonModificarAnimal.addActionListener(new ActionListener() {
@@ -348,19 +367,6 @@ public class Frame_visualizar{
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						dbVer.dbModificarAnimal("update animales set apodo=" + "'" + textFieldModificarApodo.getText() + "'" + "where identificacion="+entradaModificar);
-						dbVer.dbModificarAnimal("update aguilas set apodo=" + "'" + textFieldModificarApodo.getText() + "'" + "where identificacion="+entradaModificar);
-						dbVer.dbModificarAnimal("UPDATE pinguinos SET apodo=" + "'" + textFieldModificarApodo.getText() + "'" + "WHERE identificacion="+entradaModificar);
-						dbVer.dbModificarAnimal("UPDATE serpientes SET apodo=" + "'" + textFieldModificarApodo.getText() + "'" + "WHERE identificacion="+entradaModificar);
-						dbVer.dbModificarAnimal("UPDATE cocodrilos SET apodo=" + "'" + textFieldModificarApodo.getText() + "'" + "WHERE identificacion="+entradaModificar);
-						dbVer.dbModificarAnimal("UPDATE kois SET apodo=" + "'" + textFieldModificarApodo.getText() + "'" + "WHERE identificacion="+entradaModificar);
-						dbVer.dbModificarAnimal("UPDATE peces_globo SET apodo=" + "'" + textFieldModificarApodo.getText() + "'" + "WHERE identificacion="+entradaModificar);
-						dbVer.dbModificarAnimal("UPDATE guepardos SET apodo=" + "'" + textFieldModificarApodo.getText() + "'" + "WHERE identificacion="+entradaModificar);
-						dbVer.dbModificarAnimal("UPDATE pumas SET apodo=" + "'" + textFieldModificarApodo.getText() + "'" + "WHERE identificacion="+entradaModificar);
-						dbVer.dbModificarAnimal("UPDATE monos SET apodo=" + "'" + textFieldModificarApodo.getText() + "'" + "WHERE identificacion="+entradaModificar);
-						dbVer.dbModificarAnimal("UPDATE gorilas SET apodo=" + "'" + textFieldModificarApodo.getText() + "'" + "WHERE identificacion="+entradaModificar);
-						dbVer.dbModificarAnimal("UPDATE vacas SET apodo=" + "'" + textFieldModificarApodo.getText() + "'" + "WHERE identificacion="+entradaModificar);
-						dbVer.dbModificarAnimal("UPDATE toros SET apodo=" + "'" + textFieldModificarApodo.getText() + "'" + "WHERE identificacion="+entradaModificar);
-
 						marcoEditar.dispose();
 						marcoVisualizar.dispose();
 
@@ -380,19 +386,6 @@ public class Frame_visualizar{
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						dbVer.dbModificarAnimal("update animales set edad=" + Integer.parseInt(textFieldModificarEdad.getText()) + "where identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("update aguilas set edad=" + Integer.parseInt(textFieldModificarEdad.getText()) + "where identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE pinguinos SET edad=" + Integer.parseInt(textFieldModificarEdad.getText()) + "WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE serpientes SET edad=" + Integer.parseInt(textFieldModificarEdad.getText()) + "WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE cocodrilos SET edad=" + Integer.parseInt(textFieldModificarEdad.getText()) + "WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE kois SET edad=" + Integer.parseInt(textFieldModificarEdad.getText()) + "WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE peces_globo SET edad=" + Integer.parseInt(textFieldModificarEdad.getText()) + "WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE guepardos SET edad=" + Integer.parseInt(textFieldModificarEdad.getText()) + "WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE pumas SET edad=" + Integer.parseInt(textFieldModificarEdad.getText()) + "WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE monos SET edad=" + Integer.parseInt(textFieldModificarEdad.getText()) + "WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE gorilas SET edad=" + Integer.parseInt(textFieldModificarEdad.getText()) + "WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE vacas SET edad=" + Integer.parseInt(textFieldModificarEdad.getText()) + "WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE toros SET edad=" + Integer.parseInt(textFieldModificarEdad.getText()) + "WHERE identificacion="+Integer.parseInt(entradaModificar));
-
 						marcoEditar.dispose();
 						marcoVisualizar.dispose();
 
@@ -401,6 +394,7 @@ public class Frame_visualizar{
 			}
 		});
 		
+		//ACTION LISTENER DEL BOTON MODIFICAR PESO
 		botonModificarPeso.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -410,20 +404,28 @@ public class Frame_visualizar{
 				botonAceptarModificarPeso.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent k) {
+						
 						dbVer.dbModificarAnimal("UPDATE animales SET peso="+Double.parseDouble(textFieldModificarPeso.getText())+"WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE aguilas SET peso="+Double.parseDouble(textFieldModificarPeso.getText())+"WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE pinguinos SET peso="+Double.parseDouble(textFieldModificarPeso.getText())+"WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE serpientes SET peso="+Double.parseDouble(textFieldModificarPeso.getText())+"WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE cocodrilos SET peso="+Double.parseDouble(textFieldModificarPeso.getText())+"WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE kois SET peso="+Double.parseDouble(textFieldModificarPeso.getText())+"WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE peces_globo SET peso="+Double.parseDouble(textFieldModificarPeso.getText())+"WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE guepardos SET peso="+Double.parseDouble(textFieldModificarPeso.getText())+"WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE pumas SET peso="+Double.parseDouble(textFieldModificarPeso.getText())+"WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE monos SET peso="+Double.parseDouble(textFieldModificarPeso.getText())+"WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE gorilas SET peso="+Double.parseDouble(textFieldModificarPeso.getText())+"WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE vacas SET peso="+Double.parseDouble(textFieldModificarPeso.getText())+"WHERE identificacion="+Integer.parseInt(entradaModificar));
-						dbVer.dbModificarAnimal("UPDATE toros SET peso="+Double.parseDouble(textFieldModificarPeso.getText())+"WHERE identificacion="+Integer.parseInt(entradaModificar));
+						marcoEditar.dispose();
+						marcoVisualizar.dispose();
 
+					}
+				});
+			}
+		});
+		
+		//ACTION LISTENER DEL BOTON MODIFICAR EXTRA
+		botonModificarExtra.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				marcoEditar.setContentPane(panelModificarExtra);
+				marcoEditar.invalidate();
+				marcoEditar.validate();
+				botonAceptarModificarExtra.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent k) {
+						
+						dbVer.dbModificarAnimal("UPDATE animales SET extra="+"'"+textFieldModificarExtra.getText()+"'"+"WHERE identificacion="+Integer.parseInt(entradaModificar));
 						marcoEditar.dispose();
 						marcoVisualizar.dispose();
 
@@ -503,19 +505,6 @@ public class Frame_visualizar{
 						marcoEditar.setTitle("ELIMINAR ANIMAL");
 						entradaEliminar = textFieldEliminar.getText();
 						if((dbVer.dbStmtExisteID("SELECT *FROM animales WHERE identificacion="+entradaEliminar)==1)) {
-							
-							dbVer.dbModificarAnimal("DELETE FROM aguilas where identificacion="+entradaEliminar);
-							dbVer.dbModificarAnimal("DELETE FROM pinguinos where identificacion="+entradaEliminar);
-							dbVer.dbModificarAnimal("DELETE FROM serpientes where identificacion="+entradaEliminar);
-							dbVer.dbModificarAnimal("DELETE FROM cocodrilos where identificacion="+entradaEliminar);
-							dbVer.dbModificarAnimal("DELETE FROM kois where identificacion="+entradaEliminar);
-							dbVer.dbModificarAnimal("DELETE FROM peces_globo where identificacion="+entradaEliminar);
-							dbVer.dbModificarAnimal("DELETE FROM guepardos where identificacion="+entradaEliminar);
-							dbVer.dbModificarAnimal("DELETE FROM pumas where identificacion="+entradaEliminar);
-							dbVer.dbModificarAnimal("DELETE FROM monos where identificacion="+entradaEliminar);
-							dbVer.dbModificarAnimal("DELETE FROM gorilas where identificacion="+entradaEliminar);
-							dbVer.dbModificarAnimal("DELETE FROM vacas where identificacion="+entradaEliminar);
-							dbVer.dbModificarAnimal("DELETE FROM toros where identificacion="+entradaEliminar);
 
 							dbVer.dbModificarAnimal("DELETE FROM animales where identificacion="+entradaEliminar);
 							

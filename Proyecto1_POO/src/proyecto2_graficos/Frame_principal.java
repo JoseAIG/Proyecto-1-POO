@@ -41,7 +41,7 @@ public class Frame_principal {
 	private JLabel labelIngresoApodo = new JLabel("APODO:");
 	private JLabel labelIngresoEdad = new JLabel("EDAD:");
 	private JLabel labelIngresoPeso = new JLabel("PESO:");
-	private JLabel labelTamanoSerpiente = new JLabel("TAMAÑO:");
+	private JLabel labelExtraSerpiente = new JLabel("DESC.VEN:");
 	private JLabel labelVeneno = new JLabel("DESC. DEL VENENO:");
 	private JLabel labelDescLeche = new JLabel("DESC. DE LA LECHE:");
 	
@@ -346,9 +346,6 @@ public class Frame_principal {
 							//INGRESAR AGUILA A TABLA ANIMALES EN DATABASE
 							Object[] AguilaCompleto = {setID,"Aguila","Ave",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
 							DB.dbPStmtIngresarTablaTodos("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso) VALUES (?,?,?,?,?,?)", AguilaCompleto);
-							//INGRESAR AGUILA A TABLA AGUILAS EN DATABASE
-							Object[] Aguila = {setID,textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
-							DB.dbPStmtIngresarAnimalesNormales("INSERT INTO aguilas (identificacion,apodo,edad,peso) VALUES (?,?,?,?)", Aguila);
 							setID++;
 							System.out.println("Aguila ingresada...");
 							JOptionPane.showMessageDialog(null, "Aguila Ingresada exitosamente...");
@@ -388,8 +385,6 @@ public class Frame_principal {
 						try {
 							Object[] PinguinoCompleto = {setID,"Pinguino","Ave",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
 							DB.dbPStmtIngresarTablaTodos("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso) VALUES(?,?,?,?,?,?)", PinguinoCompleto);
-							Object[] Pinguino = {setID,textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
-							DB.dbPStmtIngresarAnimalesNormales("INSERT INTO pinguinos (identificacion,apodo,edad,peso) VALUES (?,?,?,?)", Pinguino);
 							setID++;
 							JOptionPane.showMessageDialog(null, "Pinguino ingresado exitosamente...");
 							textFieldApodo.setText(null);
@@ -419,8 +414,8 @@ public class Frame_principal {
 						labelSerpiente.setBounds(280, 0, 80, 25);
 						panelIngresarSerpiente.add(labelSerpiente);
 						setearElementosIngreso(panelIngresarSerpiente);
-						labelTamanoSerpiente.setBounds(200, 120, 120, 20);
-						panelIngresarSerpiente.add(labelTamanoSerpiente);
+						labelExtraSerpiente.setBounds(200, 120, 120, 20);
+						panelIngresarSerpiente.add(labelExtraSerpiente);
 						panelIngresarSerpiente.add(textFieldDescripcionExtra);
 						marcoPrincipal.setContentPane(panelIngresarSerpiente);
 						marcoPrincipal.invalidate();
@@ -429,10 +424,8 @@ public class Frame_principal {
 							@Override
 							public void actionPerformed(ActionEvent h) {
 								try {
-									Object[] SerpienteCompleto = {setID,"Serpiente","Reptil",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
-									DB.dbPStmtIngresarTablaTodos("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso) VALUES (?,?,?,?,?,?)", SerpienteCompleto);
-									Object[] Serpiente = {setID,textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText()),textFieldDescripcionExtra.getText()};
-									DB.dbPStmtIngresarAnimalesEspeciales("INSERT INTO serpientes (identificacion,apodo,edad,peso,tamanio) VALUES (?,?,?,?,?)", Serpiente);
+									Object[] SerpienteCompleto = {setID,"Serpiente","Reptil",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText()),textFieldDescripcionExtra.getText()};
+									DB.dbPStmtIngresarTablaTodosExtra("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso,extra) VALUES (?,?,?,?,?,?,?)", SerpienteCompleto);
 									setID++;
 									System.out.println("No. ID proximo: " + setID);
 									JOptionPane.showMessageDialog(null, "Serpiente ingresada exitosamente...");
@@ -472,8 +465,6 @@ public class Frame_principal {
 								try {
 									Object[] CocodriloCompleto = {setID,"Cocodrilo","Reptil",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
 									DB.dbPStmtIngresarTablaTodos("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso) VALUES (?,?,?,?,?,?)", CocodriloCompleto);
-									Object[] Cocodrilo = {setID,textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
-									DB.dbPStmtIngresarAnimalesNormales("INSERT INTO cocodrilos (identificacion,apodo,edad,peso) VALUES (?,?,?,?)", Cocodrilo);
 									setID++;
 									JOptionPane.showMessageDialog(null, "Cocodrilo ingresado exitosamente...");
 									textFieldApodo.setText(null);
@@ -512,8 +503,6 @@ public class Frame_principal {
 								try {
 									Object[] KoiCompleto = {setID,"Koi","Pez",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
 									DB.dbPStmtIngresarTablaTodos("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso) VALUES(?,?,?,?,?,?)", KoiCompleto);
-									Object[] Koi = {setID,textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
-									DB.dbPStmtIngresarAnimalesNormales("INSERT INTO kois (identificacion,apodo,edad,peso) VALUES (?,?,?,?)", Koi);
 									setID++;
 									JOptionPane.showMessageDialog(null, "Koi ingresado exitosamente...");
 									textFieldApodo.setText(null);
@@ -553,10 +542,8 @@ public class Frame_principal {
 							@Override
 							public void actionPerformed(ActionEvent h) {
 								try {									
-									Object[] Pez_globoCompleto = {setID,"Pez Globo","Pez",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
-									DB.dbPStmtIngresarTablaTodos("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso) VALUES (?,?,?,?,?,?)", Pez_globoCompleto);
-									Object[] Pez_globo = {setID,textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText()),textFieldDescripcionExtra.getText()};
-									DB.dbPStmtIngresarAnimalesEspeciales("INSERT INTO peces_globo (identificacion,apodo,edad,peso,veneno) VALUES (?,?,?,?,?)", Pez_globo);
+									Object[] Pez_globoCompleto = {setID,"Pez Globo","Pez",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText()),textFieldDescripcionExtra.getText()};
+									DB.dbPStmtIngresarTablaTodosExtra("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso,extra) VALUES (?,?,?,?,?,?,?)", Pez_globoCompleto);
 									setID++;
 									JOptionPane.showMessageDialog(null, "Pez globo ingresado exitosamente...");
 									textFieldApodo.setText(null);
@@ -595,8 +582,6 @@ public class Frame_principal {
 								try {
 									Object[] GuepardoCompleto = {setID,"Guepardo","Felino",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
 									DB.dbPStmtIngresarTablaTodos("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso) VALUES(?,?,?,?,?,?)", GuepardoCompleto);
-									Object[] Guepardo = {setID,textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
-									DB.dbPStmtIngresarAnimalesNormales("INSERT INTO guepardos (identificacion,apodo,edad,peso) VALUES (?,?,?,?)", Guepardo);
 									setID++;
 									JOptionPane.showMessageDialog(null, "Guepardo ingresado exitosamente...");
 									textFieldApodo.setText(null);
@@ -635,8 +620,6 @@ public class Frame_principal {
 								try {
 									Object[] PumaCompleto = {setID,"Puma","Felino",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
 									DB.dbPStmtIngresarTablaTodos("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso) VALUES(?,?,?,?,?,?)", PumaCompleto);
-									Object[] Puma = {setID,textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
-									DB.dbPStmtIngresarAnimalesNormales("INSERT INTO pumas (identificacion,apodo,edad,peso) VALUES (?,?,?,?)", Puma);
 									setID++;
 									JOptionPane.showMessageDialog(null, "Puma ingresado exitosamente...");
 									textFieldApodo.setText(null);
@@ -675,8 +658,6 @@ public class Frame_principal {
 								try {
 									Object[] MonoCompleto = {setID,"Mono","Primate",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
 									DB.dbPStmtIngresarTablaTodos("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso) VALUES(?,?,?,?,?,?)", MonoCompleto);
-									Object[] Mono = {setID,textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
-									DB.dbPStmtIngresarAnimalesNormales("INSERT INTO monos (identificacion,apodo,edad,peso) VALUES (?,?,?,?)", Mono);
 									setID++;
 									JOptionPane.showMessageDialog(null, "Mono ingresado exitosamente...");
 									textFieldApodo.setText(null);
@@ -717,8 +698,6 @@ public class Frame_principal {
 								try {
 									Object[] GorilaCompleto = {setID,"Gorila","Primate",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
 									DB.dbPStmtIngresarTablaTodos("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso) VALUES(?,?,?,?,?,?)", GorilaCompleto);
-									Object[] Gorila = {setID,textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
-									DB.dbPStmtIngresarAnimalesNormales("INSERT INTO gorilas (identificacion,apodo,edad,peso) VALUES (?,?,?,?)", Gorila);
 									setID++;
 									JOptionPane.showMessageDialog(null, "Gorila ingresado exitosamente...");
 									textFieldApodo.setText(null);
@@ -758,10 +737,8 @@ public class Frame_principal {
 							@Override
 							public void actionPerformed(ActionEvent h) {
 								try {
-									Object[] VacaCompleto = {setID,"Vaca","Bovino",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
-									DB.dbPStmtIngresarTablaTodos("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso) VALUES (?,?,?,?,?,?)", VacaCompleto);
-									Object[] Vaca = {setID,textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText()),textFieldDescripcionExtra.getText()};
-									DB.dbPStmtIngresarAnimalesEspeciales("INSERT INTO vacas (identificacion,apodo,edad,peso,leche) VALUES (?,?,?,?,?)", Vaca);
+									Object[] VacaCompleto = {setID,"Vaca","Bovino",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText()),textFieldDescripcionExtra.getText()};
+									DB.dbPStmtIngresarTablaTodosExtra("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso,extra) VALUES (?,?,?,?,?,?,?)", VacaCompleto);
 									setID++;
 									JOptionPane.showMessageDialog(null, "Vaca ingresada exitosamente...");
 									textFieldApodo.setText(null);
@@ -800,8 +777,6 @@ public class Frame_principal {
 								try {
 									Object[] ToroCompleto = {setID,"Toro","Bovino",textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
 									DB.dbPStmtIngresarTablaTodos("INSERT INTO animales (identificacion,animal,especie,apodo,edad,peso) VALUES(?,?,?,?,?,?)", ToroCompleto);
-									Object[] Toro = {setID,textFieldApodo.getText(),Integer.parseInt(textFieldEdad.getText()),Double.parseDouble(textFieldPeso.getText())};
-									DB.dbPStmtIngresarAnimalesNormales("INSERT INTO toros (identificacion,apodo,edad,peso) VALUES (?,?,?,?)", Toro);
 									setID++;
 									JOptionPane.showMessageDialog(null, "Toro ingresado exitosamente...");
 									textFieldApodo.setText(null);
