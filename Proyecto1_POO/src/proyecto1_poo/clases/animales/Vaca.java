@@ -5,9 +5,9 @@ import proyecto1_poo.clases.Bovino;
 
 public class Vaca extends Bovino implements Interface_caminar{
 
-	private  int litros_leche;
+	private  String litros_leche;
 	
-	public Vaca(String nombre_animal, int edad, double peso, int litros_leche) {
+	public Vaca(String nombre_animal, int edad, double peso, String litros_leche) {
 		super(nombre_animal, edad, peso);
 		this.setNombre("Vaca");
 		this.setCrias_en_parto("Usualmente las vacas tienen de 1 a 3 becerros.");
@@ -35,7 +35,7 @@ public class Vaca extends Bovino implements Interface_caminar{
 			
 	//POLIMORFISMO toString
 	public String toString() {
-		return super.toString() + " Litros de leche diarios: " + litros_leche;
+		return super.toString() + " Descripcion de la leche: " + litros_leche;
 
 	}
 }

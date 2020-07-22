@@ -42,6 +42,6 @@ public class Animal_viviparo extends Animal{
 	
 	//toString
 	public String toString() {
-		return " Animal: " + this.getNombre() + ". Apodo del animal: " + this.getApodo_animal() + ". Animal viviparo." + " Edad: " + this.getEdad() + " año(s). Peso: " + this.getPeso() + "Kg.\n";
+		return " Animal: " + this.getNombre() + ". Apodo del animal: " + this.getApodo_animal() + ". Animal viviparo." + " Edad: " + this.getEdad() + " anio(s). Peso: " + this.getPeso() + "Kg.";
 	}
 }
